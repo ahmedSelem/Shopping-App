@@ -1,0 +1,43 @@
+<div class="row mt-4">
+    <div class="col-md-12">
+        <form  [formGroup]="recipeForm!">
+            <div class="d-grid gap-2 d-md-block mb-3">
+                <button [disabled]="!recipeForm!.valid" class="btn btn-success me-3" type="button" (click)="onSubmit()">Save</button>
+                <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+            </div>
+            <div class="mb-3">
+                <label for="nameIngerdient" class="form-label">Name</label>
+                <input formControlName="name" type="text" class="form-control" id="nameIngerdient">
+            </div>
+            <div class="mb-3">
+                <label for="imageIngerdient" class="form-label">Image URL</label>
+                <input formControlName="imagePath" #imgPath type="text" class="form-control" id="imageIngerdient">
+            </div>
+            <div class="img-preiew mb-3">
+                <img [src]="imgPath.value" />
+            </div>
+            <div class="mb-3">
+                <label for="DescIngerdient" class="form-label">Description</label>
+                <textarea formControlName="description" class="form-control" id="DescIngerdient" rows="6"></textarea>
+            </div>
+            <div formArrayName="ingerdient">
+                <div class="row mb-4" *ngFor="let ingerCTRL of controls; let i = index" [formGroupName]="i">
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" formControlName="name">
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" formControlName="amount">
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-danger" type="button" (click)="onDeleteIngerdient(i)">X</button>
+                    </div>
+                </div>
+                <div class="row pt-4 border-top">
+                    <div class="col-md-3">
+                        <button class="btn btn-success" (click)="addNewIngerdient()"> New Ingerdient </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

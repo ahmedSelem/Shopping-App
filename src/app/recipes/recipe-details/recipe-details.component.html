@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-12 mt-4">
+        <img [src]="recipeObj?.imagePath" style="height: 200px;"/>
+    </div>
+    <div class="col-12 mt-4">
+        <h3> {{recipeObj?.name}} </h3>
+    </div>
+    <div class="col-12 mt-4">
+        <div class="btn-group">
+            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Manage Recipe
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                   <a (click)="onAddIngerdToShopingList()" class="dropdown-item"> To Shopping List </a>
+                </li>
+                <li>
+                    <a (click)="onEditRecipe()" class="dropdown-item"> Edit Recipe </a>
+                </li>
+                <li> 
+                    <a class="dropdown-item" (click)="onDeleteRecipe()"> Delete Recipe  </a>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="col-12 mt-4">
+        <p> {{recipeObj?.description}} </p>
+    </div>
+
+    <div class="col-12">
+        <ul class="list-group">
+            <li *ngFor="let ingerdient of recipeObj?.ingerdient" class="list-group-item">
+                {{ ingerdient.name }} - {{ ingerdient.amount }}
+            </li>
+        </ul>
+    </div>
+</div>

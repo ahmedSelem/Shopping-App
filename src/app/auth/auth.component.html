@@ -1,0 +1,34 @@
+
+<div class="loading-sec text-center" *ngIf="isLoading">
+    <app-loading></app-loading>
+</div>
+
+.<div class="alert alert-danger p-2 text-center" role="alert" *ngIf="errorMsg">
+  <h4 class="alert-heading"> {{ errorMsg }} </h4>
+</div>
+
+<div class="row justify-content-center mt-4" *ngIf="!isLoading">
+    <div class="col-md-6">
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input ngModel required email type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control" ngModel required
+                    minlength="6">
+            </div>
+            <div class="btn-groups">
+                <button class="btn btn-primary" type="submit" [disabled]="!authForm.valid">
+                    {{isLoginMode ? 'SignIn' : 'SignUp'}}
+                </button> 
+                |
+                <button class="btn btn-primary" type="button" (click)="onToggleLogMode()">Switch To {{isLoginMode ? 'SignUp' :
+                    'SignIn'}}</button>
+
+               
+            </div>
+        </form>
+    </div>
+</div>

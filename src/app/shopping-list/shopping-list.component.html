@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-10">
+        <app-shopping-edit></app-shopping-edit>
+    </div>
+    <hr />
+    <div class="col-md-5">
+        <ul class="list-unstyled list-group">
+            <li *ngFor="let ingerdient of ingerdientsList; let id = index" (click)="onSelectedInger(id)" class="list-group-item">
+                <a  style="cursor: pointer;" >
+                    {{ ingerdient.name }}
+                    ({{ ingerdient.amount }})
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
